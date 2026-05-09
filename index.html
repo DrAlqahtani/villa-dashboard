@@ -3,608 +3,410 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>فلة العمر — لوحة المصروفات</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>فلة العمر — المصروفات</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{
-  --navy:#0B1E3D; --navy2:#142850; --gold:#C9A84C; --gold2:#E8C872;
-  --green:#0E6B3E; --green2:#15A360; --green-bg:#E6F4EE; --green-border:#A8DFC0;
-  --red:#8B1A1A; --red2:#C0392B; --red-bg:#FDEDED; --red-border:#F5B8B8;
-  --blue:#1A4F8A; --blue2:#2E73C4;
-  --bg:#F4F6FA; --card:#FFFFFF; --text:#111827; --text2:#6B7280;
-  --border:#E5E9F0; --r:16px; --rs:10px;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth}
+:root{--navy:#0B1E3D;--navy2:#142850;--gold:#C9A84C;--gold2:#E8C872;
+  --green:#0E6B3E;--green2:#15A360;--green-bg:#E6F4EE;--green-border:#A8DFC0;
+  --red:#8B1A1A;--red2:#C0392B;--red-bg:#FDEDED;--red-border:#F5B8B8;
+  --blue2:#2E73C4;--bg:#F4F6FA;--card:#FFFFFF;--text:#111827;--text2:#6B7280;
+  --border:#E5E9F0;--r:16px;--rs:10px}
+*{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:var(--text);direction:rtl;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-
-/* ═══ HEADER ═══ */
-.header{
-background:linear-gradient(150deg,#0B1E3D 0%,#142850 50%,#0A1A35 100%);
-padding:20px 16px 16px;position:relative;overflow:hidden;
-}
-.header::before{content:’’;position:absolute;top:-50px;right:-50px;width:200px;height:200px;
-border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.12),transparent 70%);pointer-events:none}
-.header::after{content:’’;position:absolute;bottom:-80px;left:-30px;width:260px;height:260px;
-border-radius:50%;background:radial-gradient(circle,rgba(42,83,150,.15),transparent 70%);pointer-events:none}
-.header-inner{display:flex;align-items:center;gap:14px;position:relative;z-index:2}
-.h-icon{width:48px;height:48px;flex-shrink:0;background:linear-gradient(135deg,var(–gold),var(–gold2));
-border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px;
-box-shadow:0 4px 16px rgba(201,168,76,.35)}
-.h-text h1{font-family:‘Tajawal’,sans-serif;font-size:19px;font-weight:900;color:#fff;line-height:1.2}
-.h-text p{font-size:11px;color:rgba(255,255,255,.45);font-weight:300;margin-top:2px}
-.h-date{margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);
-display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
-.h-date span{font-size:10px;color:rgba(255,255,255,.38)}
-.h-date strong{font-size:12px;color:var(–gold);font-weight:700}
-.gold-line{height:3px;background:linear-gradient(90deg,var(–gold),var(–gold2),var(–gold))}
-
-/* ═══ CONTAINER ═══ */
-.wrap{padding:14px 14px 50px;max-width:720px;margin:0 auto}
-
-/* ═══ SECTION HEADER ═══ */
-.sec-hdr{
-display:flex;align-items:center;gap:10px;margin-bottom:12px;margin-top:20px;
-padding-bottom:10px;border-bottom:2px solid var(–border);
-}
-.sec-hdr:first-of-type{margin-top:0}
-.sec-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.sec-title{font-family:‘Tajawal’,sans-serif;font-size:14px;font-weight:800;color:var(–navy)}
-
-/* ═══ TOTAL SECTION — Big summary card ═══ */
-.total-card{
-background:linear-gradient(135deg,var(–navy) 0%,var(–navy2) 60%,#1A3A6E 100%);
-border-radius:var(–r);padding:20px;margin-bottom:10px;position:relative;overflow:hidden;
-box-shadow:0 4px 20px rgba(11,30,61,.2);
-}
-.total-card::before{content:’’;position:absolute;top:-40px;left:-40px;width:180px;height:180px;
-border-radius:50%;background:rgba(201,168,76,.06);pointer-events:none}
-.total-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
-.total-label{font-size:11px;font-weight:500;color:rgba(255,255,255,.5);margin-bottom:6px}
-.total-amount{font-family:‘Tajawal’,sans-serif;font-size:30px;font-weight:900;color:#fff;line-height:1}
-.total-amount span{font-size:14px;font-weight:400;color:rgba(255,255,255,.5);margin-right:4px}
-.total-badge{background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);border-radius:8px;
-padding:6px 12px;text-align:center}
-.total-badge-pct{font-family:‘Tajawal’,sans-serif;font-size:22px;font-weight:900;color:var(–gold);line-height:1}
-.total-badge-lbl{font-size:9px;color:rgba(255,255,255,.45);margin-top:2px}
-.total-progress-track{height:10px;background:rgba(255,255,255,.1);border-radius:20px;overflow:hidden;margin-bottom:10px}
-.total-progress-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(–gold),var(–gold2));
-width:0%;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
-.total-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
-.total-meta-item{font-size:10px;color:rgba(255,255,255,.45)}
-.total-meta-item strong{color:rgba(255,255,255,.8);font-weight:600}
-
-/* ═══ BUDGET ROW (2 cards) ═══ */
-.budget-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.budget-card{background:var(–card);border-radius:var(–r);padding:14px;
-border:1px solid var(–border);box-shadow:0 1px 6px rgba(0,0,0,.05);overflow:hidden;position:relative}
-.budget-card::before{content:’’;position:absolute;top:0;right:0;left:0;height:3px}
-.bc-green::before{background:linear-gradient(90deg,var(–green),var(–green2))}
-.bc-red::before{background:linear-gradient(90deg,var(–red),var(–red2))}
-.bc-label{font-size:10px;font-weight:600;color:var(–text2);margin-bottom:8px;display:flex;align-items:center;gap:5px}
-.bc-amount{font-family:‘Tajawal’,sans-serif;font-size:18px;font-weight:900;line-height:1;margin-bottom:4px}
-.bc-green .bc-amount{color:var(–green)}
-.bc-red .bc-amount{color:var(–red2)}
-.bc-sub{font-size:9px;color:var(–text2);margin-bottom:10px}
-.bc-bar-track{height:6px;background:var(–border);border-radius:20px;overflow:hidden;margin-bottom:6px}
-.bc-bar-fill{height:100%;border-radius:20px;width:0%;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
-.bc-green .bc-bar-fill{background:linear-gradient(90deg,var(–green),var(–green2))}
-.bc-red .bc-bar-fill{background:linear-gradient(90deg,var(–red),var(–red2))}
-.bc-footer{display:flex;justify-content:space-between;font-size:9px;color:var(–text2)}
-.bc-footer strong{font-weight:600}
-.bc-green .bc-footer strong{color:var(–green)}
-.bc-red .bc-footer strong{color:var(–red2)}
-
-/* ═══ CARDS ═══ */
-.card{background:var(–card);border-radius:var(–r);padding:16px;
-border:1px solid var(–border);box-shadow:0 1px 6px rgba(0,0,0,.04);margin-bottom:10px}
-.card-title{font-size:13px;font-weight:700;color:var(–navy);margin-bottom:14px;
-padding-bottom:10px;border-bottom:1px solid var(–border);display:flex;align-items:center;gap:6px}
-
-/* ═══ MONTHLY CHART ═══ */
-.monthly-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
-.monthly-chart{display:flex;align-items:flex-end;gap:5px;height:110px;min-width:300px}
-.month-col{flex:1;display:flex;flex-direction:column;align-items:center;min-width:26px}
-.month-bar{width:100%;border-radius:5px 5px 0 0;min-height:4px;position:relative;cursor:pointer;
-background:linear-gradient(180deg,var(–blue2),var(–navy));transition:filter .15s}
-.month-bar.peak{background:linear-gradient(180deg,var(–gold2),#D4881F)}
-.month-tip{position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);
-background:var(–navy);color:#fff;font-size:9px;padding:3px 6px;border-radius:5px;
-white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;z-index:10}
-.month-bar.show-tip .month-tip{opacity:1}
-.month-label{font-size:9px;color:var(–text2);text-align:center;margin-top:4px;line-height:1.3}
-
-/* ═══ CATEGORY BARS ═══ */
-.cat-list{display:flex;flex-direction:column;gap:8px}
-.cat-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:3px}
-.cat-name{font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px}
-.cat-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.cat-right{display:flex;align-items:center;gap:8px}
-.cat-pct{font-size:10px;color:var(–text2)}
-.cat-amt{font-family:‘Tajawal’,sans-serif;font-size:12px;font-weight:700;color:var(–navy)}
-.cat-track{height:5px;background:var(–bg);border-radius:10px;overflow:hidden}
-.cat-fill{height:100%;border-radius:10px;width:0%;transition:width 1.2s ease-out}
-
-/* ═══ TRANSACTION CARDS ═══ */
-.tx-list{display:flex;flex-direction:column;gap:7px}
-.tx-card{background:#FAFBFD;border:1px solid var(–border);border-radius:var(–rs);
-padding:10px 12px;display:flex;align-items:center;gap:10px}
-.tx-card.top1{background:linear-gradient(135deg,#FFFEF5,#FFF9E0);border-color:#E8C872;}
-.tx-card.skel{border-right:3px solid var(–green)}
-.tx-card.other{border-right:3px solid #9B59B6}
-.tx-num{width:24px;height:24px;border-radius:7px;flex-shrink:0;background:var(–navy);
-color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
-.tx-num.gold{background:linear-gradient(135deg,var(–gold),var(–gold2));color:var(–navy)}
-.tx-info{flex:1;min-width:0}
-.tx-title{font-size:11px;font-weight:600;color:var(–text);line-height:1.35}
-.tx-meta{font-size:9px;color:var(–text2);margin-top:2px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-.tx-badge{font-size:9px;font-weight:600;padding:2px 6px;border-radius:20px}
-.tx-right{text-align:center;flex-shrink:0}
-.tx-amount{font-family:‘Tajawal’,sans-serif;font-size:13px;font-weight:900;color:var(–navy);white-space:nowrap}
-.tx-cumul{font-size:9px;color:var(–text2);margin-top:1px}
-
-/* ═══ SHOW MORE ═══ */
-.show-more{width:100%;padding:11px;margin-top:8px;background:var(–card);
-border:1.5px solid var(–border);border-radius:var(–rs);font-family:‘IBM Plex Sans Arabic’,sans-serif;
-font-size:12px;font-weight:700;color:var(–blue2);cursor:pointer;transition:background .15s}
-.show-more:active{background:var(–bg)}
-
-/* ═══ FOOTER ═══ */
-.footer{background:var(–navy);color:rgba(255,255,255,.3);text-align:center;padding:14px;font-size:10px}
-
-/* ═══ RESPONSIVE ═══ */
-@media(min-width:580px){
-.wrap{padding:22px 24px 60px}
-.header{padding:26px 28px 20px}
-.h-text h1{font-size:22px}
-.total-amount{font-size:36px}
-.budget-row{grid-template-columns:1fr 1fr}
-.monthly-chart{height:140px}
-}
+/* LOCK */
+#ls{position:fixed;inset:0;z-index:9999;background:linear-gradient(150deg,#0B1E3D,#142850);display:flex;align-items:center;justify-content:center}
+.lb{background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.25);border-radius:20px;padding:36px 28px;width:88%;max-width:320px;text-align:center}
+.li{font-size:40px;margin-bottom:10px}.lt{font-family:'Tajawal',sans-serif;font-size:20px;font-weight:900;color:#fff;margin-bottom:4px}
+.ls{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:22px}
+.lin{width:100%;padding:13px;border-radius:10px;border:1.5px solid rgba(201,168,76,.3);background:rgba(255,255,255,.08);color:#fff;font-size:16px;text-align:center;outline:none;letter-spacing:3px;-webkit-text-security:disc;font-family:'IBM Plex Sans Arabic',sans-serif}
+.lin:focus{border-color:rgba(201,168,76,.7)}
+.lbtn{width:100%;margin-top:12px;padding:13px;border-radius:10px;border:none;background:linear-gradient(135deg,#C9A84C,#E8C872);color:#0B1E3D;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:900;cursor:pointer}
+.le{color:#ff6b6b;font-size:11px;margin-top:8px;min-height:16px}
+/* HEADER */
+.hdr{background:linear-gradient(150deg,#0B1E3D,#142850,#0A1A35);padding:18px 16px 14px;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.1),transparent 70%);pointer-events:none}
+.hi{display:flex;align-items:center;gap:13px;position:relative;z-index:2}
+.hico{width:46px;height:46px;flex-shrink:0;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.ht h1{font-family:'Tajawal',sans-serif;font-size:18px;font-weight:900;color:#fff;line-height:1.2}
+.ht p{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+.hd{margin-top:10px;padding-top:9px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;position:relative;z-index:2}
+.hd span{font-size:10px;color:rgba(255,255,255,.35)}.hd strong{font-size:11px;color:var(--gold)}
+.gl{height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold))}
+/* WRAP */
+.w{padding:14px 14px 60px;max-width:720px;margin:0 auto}
+/* SECTION HEADER */
+.sh{display:flex;align-items:center;gap:9px;margin-bottom:11px;margin-top:18px;padding-bottom:9px;border-bottom:2px solid var(--border)}
+.sh:first-of-type{margin-top:0}
+.sd{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.st{font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;color:var(--navy)}
+/* TOTAL CARD */
+.tc{background:linear-gradient(135deg,var(--navy),var(--navy2),#1A3A6E);border-radius:var(--r);padding:18px;margin-bottom:10px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(11,30,61,.18)}
+.tc::before{content:'';position:absolute;top:-35px;left:-35px;width:160px;height:160px;border-radius:50%;background:rgba(201,168,76,.05);pointer-events:none}
+.tt{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.tl{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:5px}
+.ta{font-family:'Tajawal',sans-serif;font-size:28px;font-weight:900;color:#fff;line-height:1}
+.ta span{font-size:13px;font-weight:400;color:rgba(255,255,255,.45);margin-right:3px}
+.tb{background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:6px 11px;text-align:center}
+.tbp{font-family:'Tajawal',sans-serif;font-size:20px;font-weight:900;color:var(--gold);line-height:1}
+.tbl{font-size:9px;color:rgba(255,255,255,.4);margin-top:2px}
+.pt{height:9px;background:rgba(255,255,255,.1);border-radius:20px;overflow:hidden;margin-bottom:9px}
+.pf{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
+.tm{display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px}
+.tmi{font-size:10px;color:rgba(255,255,255,.4)}.tmi strong{color:rgba(255,255,255,.75)}
+/* BUDGET CARD */
+.bc{background:var(--card);border-radius:var(--r);padding:14px;border:1px solid var(--border);box-shadow:0 1px 5px rgba(0,0,0,.04);position:relative;overflow:hidden;margin-bottom:10px}
+.bc::before{content:'';position:absolute;top:0;right:0;left:0;height:3px}
+.bcg::before{background:linear-gradient(90deg,var(--green),var(--green2))}
+.bcr::before{background:linear-gradient(90deg,var(--red),var(--red2))}
+.bcl{font-size:10px;font-weight:600;color:var(--text2);margin-bottom:7px}
+.bca{font-family:'Tajawal',sans-serif;font-size:20px;font-weight:900;line-height:1;margin-bottom:3px}
+.bcg .bca{color:var(--green)}.bcr .bca{color:var(--red2)}
+.bcs{font-size:9px;color:var(--text2);margin-bottom:9px}
+.bpt{height:6px;background:var(--border);border-radius:20px;overflow:hidden;margin-bottom:5px}
+.bpf{height:100%;border-radius:20px;width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
+.bcg .bpf{background:linear-gradient(90deg,var(--green),var(--green2))}
+.bcr .bpf{background:linear-gradient(90deg,var(--red),var(--red2))}
+.bft{display:flex;justify-content:space-between;font-size:9px;color:var(--text2)}
+.bcg .bft strong{color:var(--green)}.bcr .bft strong{color:var(--red2)}
+/* MINI GRID — only 3 cards, no repetition */
+.mg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.mc{border-radius:var(--rs);padding:10px;text-align:center;border:1px solid}
+.ml{font-size:9px;font-weight:600;margin-bottom:4px}
+.mv{font-family:'Tajawal',sans-serif;font-size:13px;font-weight:900}
+/* CARD */
+.card{background:var(--card);border-radius:var(--r);padding:16px;border:1px solid var(--border);box-shadow:0 1px 5px rgba(0,0,0,.04);margin-bottom:10px}
+/* MONTHLY CHART */
+.mw{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.mc2{display:flex;align-items:flex-end;gap:4px;height:135px;min-width:340px}
+.mcol{flex:1;display:flex;flex-direction:column;align-items:center;min-width:22px}
+.mbar{width:100%;border-radius:5px 5px 0 0;min-height:4px;position:relative;cursor:pointer;background:linear-gradient(180deg,var(--blue2),var(--navy))}
+.mbar.peak{background:linear-gradient(180deg,var(--gold2),#D4881F)}
+.mtip{position:absolute;bottom:50%;left:50%;transform:translate(-50%,50%) rotate(-90deg);color:#fff;font-size:8px;font-weight:700;white-space:nowrap;pointer-events:none;z-index:10;opacity:1;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.mbar.sm-bar .mtip{color:var(--navy);text-shadow:none;bottom:calc(100% + 2px);transform:translate(-50%,0) rotate(-90deg)}
+.mbar.st .mtip{opacity:1}
+.mlbl{font-size:8px;color:var(--text2);text-align:center;margin-top:4px;line-height:1.3}
+/* CATEGORIES */
+.cl{display:flex;flex-direction:column;gap:8px}
+.cr{display:flex;align-items:center;justify-content:space-between;margin-bottom:3px}
+.cn{font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px}
+.cdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.cright{display:flex;align-items:center;gap:8px}
+.cpct{font-size:10px;color:var(--text2)}
+.camt{font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:var(--navy)}
+.ctr{height:5px;background:var(--bg);border-radius:10px;overflow:hidden}
+.cfi{height:100%;border-radius:10px;width:0;transition:width 1.2s ease-out}
+/* TRANSACTIONS */
+.tl2{display:flex;flex-direction:column;gap:7px}
+.txc{background:#FAFBFD;border:1px solid var(--border);border-radius:var(--rs);padding:10px 12px;display:flex;align-items:center;gap:10px}
+.txc.sk{border-right:3px solid var(--green)}
+.txc.ot{border-right:3px solid #9B59B6}
+.txn{width:24px;height:24px;border-radius:7px;flex-shrink:0;background:var(--navy);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.txn.g{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy)}
+.txi{flex:1;min-width:0}
+.txt{font-size:11px;font-weight:600;color:var(--text);line-height:1.35}
+.txm{font-size:9px;color:var(--text2);margin-top:2px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.txbg{font-size:9px;font-weight:600;padding:2px 6px;border-radius:20px}
+.txr{text-align:center;flex-shrink:0}
+.txamt{font-family:'Tajawal',sans-serif;font-size:13px;font-weight:900;color:var(--navy);white-space:nowrap}
+.txcum{font-size:9px;color:var(--text2);margin-top:1px}
+.sm{width:100%;padding:11px;margin-top:8px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--rs);font-family:'IBM Plex Sans Arabic',sans-serif;font-size:12px;font-weight:700;color:var(--blue2);cursor:pointer}
+.foot{background:var(--navy);color:rgba(255,255,255,.28);text-align:center;padding:14px;font-size:10px}
 </style>
-
 </head>
 <body>
-<style>
-#lock-screen{
-  position:fixed;inset:0;z-index:99999;
-  background:linear-gradient(150deg,#0B1E3D 0%,#142850 60%,#0A1A35 100%);
-  display:flex;align-items:center;justify-content:center;flex-direction:column;
-  font-family:'IBM Plex Sans Arabic',sans-serif;
-}
-.lock-box{
-  background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);
-  border-radius:20px;padding:36px 28px;width:90%;max-width:340px;text-align:center;
-}
-.lock-icon{font-size:42px;margin-bottom:12px}
-.lock-title{font-family:'Tajawal',sans-serif;font-size:20px;font-weight:900;color:#fff;margin-bottom:4px}
-.lock-sub{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:24px}
-.lock-input{
-  width:100%;padding:13px 16px;border-radius:10px;border:1.5px solid rgba(201,168,76,.3);
-  background:rgba(255,255,255,.08);color:#fff;font-size:16px;text-align:center;
-  font-family:'IBM Plex Sans Arabic',sans-serif;outline:none;letter-spacing:3px;
-  -webkit-text-security:disc;
-}
-.lock-input:focus{border-color:rgba(201,168,76,.7)}
-.lock-btn{
-  width:100%;margin-top:14px;padding:13px;border-radius:10px;border:none;
-  background:linear-gradient(135deg,#C9A84C,#E8C872);color:#0B1E3D;
-  font-family:'Tajawal',sans-serif;font-size:16px;font-weight:900;cursor:pointer;
-  transition:opacity .2s;
-}
-.lock-btn:active{opacity:.85}
-.lock-err{color:#ff6b6b;font-size:12px;margin-top:10px;min-height:18px}
-</style>
 
-<div id="lock-screen">
-  <div class="lock-box">
-    <div class="lock-icon">🔒</div>
-    <div class="lock-title">فلة العمر</div>
-    <div class="lock-sub">محتوى خاص — أدخل كلمة المرور</div>
-    <input class="lock-input" id="pwInput" type="password" placeholder="••••••" 
-      onkeydown="if(event.key==='Enter')checkPw()">
-    <button class="lock-btn" onclick="checkPw()">دخول</button>
-    <div class="lock-err" id="pwErr"></div>
+<!-- LOCK -->
+
+<div id="ls">
+  <div class="lb">
+    <div class="li">🔒</div>
+    <div class="lt">فلة العمر</div>
+    <div class="ls">محتوى خاص — أدخل كلمة المرور</div>
+    <input class="lin" id="pw" type="password" placeholder="••••••" onkeydown="if(event.key==='Enter')chk()">
+    <button class="lbtn" onclick="chk()">دخول</button>
+    <div class="le" id="le"></div>
   </div>
 </div>
-
 <script>
-(function(){
-  // Check if already unlocked in this session
-  if(sessionStorage.getItem('villa_unlocked')==='1'){
-    document.getElementById('lock-screen').style.display='none';
-  }
-})();
-function checkPw(){
-  const v=document.getElementById('pwInput').value;
-  if(v==='Khaled'){
-    sessionStorage.setItem('villa_unlocked','1');
-    document.getElementById('lock-screen').style.display='none';
-  } else {
-    document.getElementById('pwErr').textContent='كلمة المرور غير صحيحة';
-    document.getElementById('pwInput').value='';
-    setTimeout(()=>document.getElementById('pwErr').textContent='',2000);
+(function(){if(sessionStorage.getItem('vu')==='1')document.getElementById('ls').style.display='none'})();
+function chk(){
+  if(document.getElementById('pw').value==='Khaled'){
+    sessionStorage.setItem('vu','1');document.getElementById('ls').style.display='none';
+  }else{
+    document.getElementById('le').textContent='كلمة المرور غير صحيحة';
+    document.getElementById('pw').value='';
+    setTimeout(()=>document.getElementById('le').textContent='',2000);
   }
 }
 </script>
 
-<div class="header">
-  <div class="header-inner">
-    <div class="h-icon">🏡</div>
-    <div class="h-text">
-      <h1>فلة العمر — المصروفات</h1>
-      <p>تتبع شامل لجميع مصروفات البناء</p>
-    </div>
+<div class="hdr">
+  <div class="hi">
+    <div class="hico">🏡</div>
+    <div class="ht"><h1>فلة العمر — المصروفات</h1><p>تتبع شامل لجميع مصروفات البناء</p></div>
   </div>
-  <div class="h-date">
-    <span>آخر تحديث</span>
-    <strong>17 فبراير 2026</strong>
+  <div class="hd"><span>آخر تحديث</span><strong>9 مايو 2026</strong></div>
+</div>
+<div class="gl"></div>
+
+<div class="w">
+
+<!-- 1. TOTAL -->
+
+<div class="sh" style="margin-top:0"><div class="sd" style="background:var(--gold)"></div><div class="st">إجمالي المصروفات</div></div>
+<div class="tc">
+  <div class="tt">
+    <div><div class="tl">إجمالي ما صُرف حتى الآن</div><div class="ta"><span>ريال</span>878,348</div></div>
+    <div class="tb"><div class="tbp">79.8%</div><div class="tbl">من الميزانية</div></div>
+  </div>
+  <div class="pt"><div class="pf" id="tf" data-w="79.8"></div></div>
+  <div class="tm">
+    <span class="tmi">الميزانية: <strong>1,100,000 ريال</strong></span>
+    <span class="tmi">المتبقي: <strong>221,652 ريال</strong></span>
+    <span class="tmi">118 معاملة</span>
   </div>
 </div>
-<div class="gold-line"></div>
 
-<div class="wrap">
+<!-- 2. SKELETON -->
 
-  <!-- ══ 1. TOTAL ══ -->
-
-  <div class="sec-hdr" style="margin-top:0">
-    <div class="sec-dot" style="background:var(--gold)"></div>
-    <div class="sec-title">إجمالي المصروفات</div>
-  </div>
-
-  <div class="total-card">
-    <div class="total-top">
-      <div>
-        <div class="total-label">إجمالي ما صُرف حتى الآن</div>
-        <div class="total-amount"><span>ريال</span>604,565</div>
-      </div>
-      <div class="total-badge">
-        <div class="total-badge-pct">55.0%</div>
-        <div class="total-badge-lbl">من الميزانية</div>
-      </div>
-    </div>
-    <div class="total-progress-track">
-      <div class="total-progress-fill" id="totalFill"></div>
-    </div>
-    <div class="total-meta">
-      <span class="total-meta-item">الميزانية الكلية: <strong>1,100,000 ريال</strong></span>
-      <span class="total-meta-item">المتبقي: <strong>495,435 ريال</strong></span>
-      <span class="total-meta-item">76 معاملة</span>
-    </div>
-  </div>
-
-  <!-- ══ 2. SKELETON ══ -->
-
-  <div class="sec-hdr">
-    <div class="sec-dot" style="background:var(--green)"></div>
-    <div class="sec-title">مصروفات العظم (الهيكل الإنشائي)</div>
-  </div>
-
-  <div class="budget-row" style="margin-bottom:12px">
-    <div class="budget-card bc-green" style="grid-column:1/-1">
-      <div class="bc-label">🏗️ إجمالي مصروفات العظم</div>
-      <div class="bc-amount">352,967 <span style="font-size:11px;font-weight:400;color:var(--text2)">ريال</span></div>
-      <div class="bc-sub">من ميزانية 800,000 ريال</div>
-      <div class="bc-bar-track"><div class="bc-bar-fill" id="skelFill" data-w="44.1"></div></div>
-      <div class="bc-footer">
-        <span>صُرف: <strong>44.1%</strong></span>
-        <span>متبقي: <strong>447,033 ريال</strong></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Skeleton KPI mini cards -->
-
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px">
-    <div style="background:var(--green-bg);border:1px solid var(--green-border);border-radius:var(--rs);padding:10px;text-align:center">
-      <div style="font-size:9px;color:var(--green);font-weight:600;margin-bottom:4px">خرسانة</div>
-      <div style="font-family:'Tajawal',sans-serif;font-size:15px;font-weight:900;color:var(--green)">114,262</div>
-    </div>
-    <div style="background:var(--green-bg);border:1px solid var(--green-border);border-radius:var(--rs);padding:10px;text-align:center">
-      <div style="font-size:9px;color:var(--green);font-weight:600;margin-bottom:4px">حديد</div>
-      <div style="font-family:'Tajawal',sans-serif;font-size:15px;font-weight:900;color:var(--green)">112,002</div>
-    </div>
-    <div style="background:var(--green-bg);border:1px solid var(--green-border);border-radius:var(--rs);padding:10px;text-align:center">
-      <div style="font-size:9px;color:var(--green);font-weight:600;margin-bottom:4px">مقاولات</div>
-      <div style="font-family:'Tajawal',sans-serif;font-size:15px;font-weight:900;color:var(--green)">66,240</div>
-    </div>
-  </div>
-
-  <!-- ══ 3. OTHER ══ -->
-
-  <div class="sec-hdr">
-    <div class="sec-dot" style="background:var(--red2)"></div>
-    <div class="sec-title">المصروفات الأخرى</div>
-  </div>
-
-  <div class="budget-row" style="margin-bottom:12px">
-    <div class="budget-card bc-red" style="grid-column:1/-1">
-      <div class="bc-label">🔧 إجمالي المصروفات الأخرى</div>
-      <div class="bc-amount">251,598 <span style="font-size:11px;font-weight:400;color:var(--text2)">ريال</span></div>
-      <div class="bc-sub">من ميزانية 300,000 ريال</div>
-      <div class="bc-bar-track"><div class="bc-bar-fill" id="otherFill" data-w="83.9"></div></div>
-      <div class="bc-footer">
-        <span>صُرف: <strong>83.9%</strong></span>
-        <span>متبقي: <strong>48,402 ريال</strong></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Other KPI mini cards -->
-
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px">
-    <div style="background:var(--red-bg);border:1px solid var(--red-border);border-radius:var(--rs);padding:10px;text-align:center">
-      <div style="font-size:9px;color:var(--red2);font-weight:600;margin-bottom:4px">تصميم</div>
-      <div style="font-family:'Tajawal',sans-serif;font-size:15px;font-weight:900;color:var(--red2)">70,000</div>
-    </div>
-    <div style="background:var(--red-bg);border:1px solid var(--red-border);border-radius:var(--rs);padding:10px;text-align:center">
-      <div style="font-size:9px;color:var(--red2);font-weight:600;margin-bottom:4px">سباكة+كهرباء</div>
-      <div style="font-family:'Tajawal',sans-serif;font-size:15px;font-weight:900;color:var(--red2)">57,624</div>
-    </div>
-    <div style="background:var(--red-bg);border:1px solid var(--red-border);border-radius:var(--rs);padding:10px;text-align:center">
-      <div style="font-size:9px;color:var(--red2);font-weight:600;margin-bottom:4px">رواتب</div>
-      <div style="font-family:'Tajawal',sans-serif;font-size:15px;font-weight:900;color:var(--red2)">40,000</div>
-    </div>
-  </div>
-
-  <!-- ══ 4. MONTHLY ══ -->
-
-  <div class="sec-hdr">
-    <div class="sec-dot" style="background:var(--blue2)"></div>
-    <div class="sec-title">المصروفات الشهرية</div>
-  </div>
-
-  <div class="card">
-    <div class="monthly-wrap">
-      <div class="monthly-chart" id="monthlyChart"></div>
-      <div style="display:flex;gap:5px;margin-top:5px;min-width:300px" id="monthlyLabels"></div>
-    </div>
-  </div>
-
-  <!-- ══ 5. CATEGORIES ══ -->
-
-  <div class="sec-hdr">
-    <div class="sec-dot" style="background:var(--gold)"></div>
-    <div class="sec-title">توزيع التصنيفات</div>
-  </div>
-
-  <div class="card">
-    <div class="cat-list" id="catList"></div>
-  </div>
-
-  <!-- ══ 6. TOP 10 ══ -->
-
-  <div class="sec-hdr">
-    <div class="sec-dot" style="background:var(--navy)"></div>
-    <div class="sec-title">أكبر 10 مصروفات</div>
-  </div>
-
-  <div class="card" style="padding:12px">
-    <div class="tx-list" id="topList"></div>
-  </div>
-
-  <!-- ══ 7. ALL TRANSACTIONS ══ -->
-
-  <div class="sec-hdr">
-    <div class="sec-dot" style="background:var(--text2)"></div>
-    <div class="sec-title">سجل المصروفات الكامل <span style="font-size:11px;font-weight:400;color:var(--text2)">(76 معاملة)</span></div>
-  </div>
-
-  <div class="card" style="padding:12px">
-    <div class="tx-list" id="allList"></div>
-    <button class="show-more" id="showMoreBtn" onclick="showMore()">عرض المزيد ↓</button>
-  </div>
-
+<div class="sh"><div class="sd" style="background:var(--green)"></div><div class="st">مصروفات العظم (الهيكل الإنشائي)</div></div>
+<div class="bc bcg">
+  <div class="bcl">🏗️ إجمالي مصروفات العظم</div>
+  <div class="bca">601,660 <span style="font-size:11px;font-weight:400;color:var(--text2)">ريال</span></div>
+  <div class="bcs">من ميزانية 800,000 ريال</div>
+  <div class="bpt"><div class="bpf" data-w="75.2"></div></div>
+  <div class="bft"><span>صُرف: <strong>75.2%</strong></span><span>متبقي: <strong>198,340 ريال</strong></span></div>
+</div>
+<div class="mg">
+  <div class="mc" style="background:var(--green-bg);border-color:var(--green-border)"><div class="ml" style="color:var(--green)">حديد</div><div class="mv" style="color:var(--green)">197,262</div></div>
+  <div class="mc" style="background:var(--green-bg);border-color:var(--green-border)"><div class="ml" style="color:var(--green)">خرسانة</div><div class="mv" style="color:var(--green)">154,262</div></div>
+  <div class="mc" style="background:var(--green-bg);border-color:var(--green-border)"><div class="ml" style="color:var(--green)">مقاولات</div><div class="mv" style="color:var(--green)">137,675</div></div>
 </div>
 
-<div class="footer">فلة العمر — بيانات حتى 17 فبراير 2026 | ميزانية العظم: 800,000 ر | ميزانية الأخرى: 300,000 ر</div>
+<!-- 3. OTHER -->
+
+<div class="sh"><div class="sd" style="background:var(--red2)"></div><div class="st">المصروفات الأخرى</div></div>
+<div class="bc bcr">
+  <div class="bcl">🔧 إجمالي المصروفات الأخرى</div>
+  <div class="bca">276,688 <span style="font-size:11px;font-weight:400;color:var(--text2)">ريال</span></div>
+  <div class="bcs">من ميزانية 300,000 ريال</div>
+  <div class="bpt"><div class="bpf" data-w="92.2"></div></div>
+  <div class="bft"><span>صُرف: <strong>92.2%</strong></span><span>متبقي: <strong>23,312 ريال</strong></span></div>
+</div>
+<div class="mg">
+  <div class="mc" style="background:var(--red-bg);border-color:var(--red-border)"><div class="ml" style="color:var(--red2)">تصميم وإشراف</div><div class="mv" style="color:var(--red2)">70,000</div></div>
+  <div class="mc" style="background:var(--red-bg);border-color:var(--red-border)"><div class="ml" style="color:var(--red2)">سباكة وكهرباء</div><div class="mv" style="color:var(--red2)">67,624</div></div>
+  <div class="mc" style="background:var(--red-bg);border-color:var(--red-border)"><div class="ml" style="color:var(--red2)">رواتب</div><div class="mv" style="color:var(--red2)">52,000</div></div>
+</div>
+
+<!-- 4. MONTHLY -->
+
+<div class="sh"><div class="sd" style="background:var(--blue2)"></div><div class="st">المصروفات الشهرية</div></div>
+<div class="card">
+  <div class="mw">
+    <div class="mc2" id="ch"></div>
+    <div style="display:flex;gap:4px;margin-top:5px;min-width:340px" id="cl"></div>
+  </div>
+</div>
+
+<!-- 5. CATEGORIES -->
+
+<div class="sh"><div class="sd" style="background:var(--gold)"></div><div class="st">توزيع التصنيفات</div></div>
+<div class="card"><div class="cl" id="cats"></div></div>
+
+<!-- 6. TRANSACTIONS -->
+
+<div class="sh"><div class="sd" style="background:var(--navy)"></div><div class="st">سجل المصروفات الكامل <span style="font-size:11px;font-weight:400;color:var(--text2)">(118 معاملة)</span></div></div>
+<div class="card" style="padding:12px">
+  <div class="tl2" id="txl"></div>
+  <button class="sm" id="smb" onclick="more()">عرض المزيد ↓</button>
+</div>
+
+</div>
+<div class="foot">فلة العمر — 9 مايو 2026 | ميزانية العظم: 800,000 | ميزانية الأخرى: 300,000</div>
 
 <script>
-const fmt = n => Math.round(n).toLocaleString('ar-EG');
-const TOTAL = 604565.3;
-
-const monthly = [
-  {label:"مايو\n25",   val:72500},
-  {label:"يونيو\n25",  val:6000},
-  {label:"يوليو\n25",  val:35500},
-  {label:"أغسطس\n25", val:2500},
-  {label:"سبتمبر\n25", val:9354},
-  {label:"أكتوبر\n25", val:123924},
-  {label:"نوفمبر\n25", val:128648},
-  {label:"ديسمبر\n25", val:88770},
-  {label:"يناير\n26",  val:80324},
-  {label:"فبراير\n26", val:57045},
-];
-
-const categories = [
-  {name:"خرسانة",        val:114262, color:"3A6EA5", skel:true},
-  {name:"حديد",           val:112002, color:"E07B3A", skel:true},
-  {name:"تصميم وإشراف",   val:70000,  color:"C9A84C", skel:false},
-  {name:"حفر وترحيل",    val:76800,  color:"8B4513", skel_amt:42800},
-  {name:"مقاولات",         val:73990,  color:"217346", skel_amt:66240},
-  {name:"سباكة وكهرباء",  val:57624,  color:"9B59B6", skel:false},
-  {name:"رواتب",           val:40000,  color:"E74C3C", skel:false},
-  {name:"متفرقات",          val:21620,  color:"7F8C8D", skel:false},
-  {name:"تأمين",            val:13234,  color:"C0392B", skel:false},
-  {name:"عزل",              val:9409,   color:"16A085", skel:true},
-  {name:"عمالة",            val:7800,   color:"2980B9", skel:true},
-  {name:"دراسات وفحص",    val:6870,   color:"8E44AD", skel:false},
-  {name:"مواد",             val:954,    color:"95A5A6", skel:true},
-];
-
-const transactions = [
-  ["2025-05-05","دفعة أولى - عقد التصميم المعماري (SIMBA)","تصميم وإشراف",37000,"C9A84C",false],
-  ["2025-05-05","الدفعة الثانية – عقد التصميم المعماري (SIMBA)","تصميم وإشراف",33000,"C9A84C",false],
-  ["2025-06-28","الرفع المساحي","دراسات وفحص",1000,"8E44AD",false],
-  ["2025-06-29","اختبار التربة","دراسات وفحص",1500,"8E44AD",false],
-  ["2025-06-30","تجهيز اختبار التربة (معدة شيول)","حفر وترحيل",1000,"8B4513",false],
-  ["2025-07-08","عقد الحفر وترحيل التربة - الدفعة الأولى","حفر وترحيل",5000,"8B4513",false],
-  ["2025-07-14","عقد الحفر وترحيل التربة - الدفعة الثانية","حفر وترحيل",10000,"8B4513",false],
-  ["2025-07-16","عقد الحفر وترحيل التربة - الدفعة الثالثة","حفر وترحيل",10000,"8B4513",false],
-  ["2025-07-19","عقد الحفر وترحيل التربة - الدفعة الرابعة والأخيرة","حفر وترحيل",8000,"8B4513",false],
-  ["2025-09-04","إيجار أيدي عاملة – حداد السور","عمالة",4000,"2980B9",true],
-  ["2025-09-07","إيجار أيدي عاملة – حداد السور (دفعة إضافية)","عمالة",1400,"2980B9",true],
-  ["2025-09-13","طلبات مواد – أغراض بناء (جدار الكهرب)","مواد",454,"95A5A6",true],
-  ["2025-09-19","إيجار أيدي عاملة – تحديد البيارة والمعالم","عمالة",1000,"2980B9",true],
-  ["2025-10-08","إيجار أيدي عاملة – المساح","دراسات وفحص",500,"8E44AD",false],
-  ["2025-10-09","طلبات مواد – إيجار الخزان (شهري)","مواد",500,"95A5A6",false],
-  ["2025-10-14","طلبات مواد – خرسانة","خرسانة",20000,"3A6EA5",true],
-  ["2025-10-16","إيجار أيدي عاملة – صبة النظافة والقواعد","عمالة",1400,"2980B9",true],
-  ["2025-10-16","طلبات مواد – حديد للفلة","حديد",28550,"E07B3A",true],
-  ["2025-10-17","طلبات مواد – مواد عزل","عزل",860,"16A085",true],
-  ["2025-10-18","عقد الحفر – المرحلة الثانية","حفر وترحيل",24000,"8B4513",true],
-  ["2025-10-18","عقد مقاول البناء – الدفعة الأولى","مقاولات",20080,"217346",true],
-  ["2025-10-19","نفقات عامة – مصاريف متفرقة","متفرقات",10000,"7F8C8D",false],
-  ["2025-10-22","MTS Mabane – حديد","حديد",4784,"E07B3A",true],
-  ["2025-10-29","مقاول المسبح – الدفعة الأولى","مقاولات",7750,"217346",false],
-  ["2025-11-01","MTS Mabane – حديد دفعة ثالثة","حديد",11167,"E07B3A",true],
-  ["2025-11-03","التعاونية للتأمين – عقد التأمين","تأمين",13234.2,"C0392B",false],
-  ["2025-11-08","مؤسسة محمد إبراهيم – وايت ماء","متفرقات",500,"7F8C8D",false],
-  ["2025-11-10","شركة الخرسانة – خرسانة القواعد","خرسانة",54262,"3A6EA5",true],
-  ["2025-11-10","المساح – آخر طلعتين","دراسات وفحص",1400,"8E44AD",false],
-  ["2025-11-12","شركة أبراج الشهباء – دفعة مقاول","مقاولات",24080,"217346",true],
-  ["2025-11-12","سلمان – أغراض فلة","متفرقات",2000,"7F8C8D",false],
-  ["2025-11-12","سلمان – دفعة أولى عزل","عزل",5000,"16A085",true],
-  ["2025-11-18","شركة الشريف – حديد 2 طن","حديد",4830,"E07B3A",true],
-  ["2025-11-21","Abad Est – عزل القواعد","عزل",1049,"16A085",true],
-  ["2025-11-27","شركة الشريف – حديد الفلة","حديد",5626,"E07B3A",true],
-  ["2025-12-02","سلمان – متفرقات","متفرقات",1000,"7F8C8D",false],
-  ["2025-12-04","سلمان – الدفان ردود","حفر وترحيل",3500,"8B4513",true],
-  ["2025-12-06","سلمان – مقاول الدفان","حفر وترحيل",3000,"8B4513",true],
-  ["2025-12-08","اختبار الدفان","دراسات وفحص",1750,"8E44AD",false],
-  ["2025-12-08","سلمان – دفان دفعة ثانية","حفر وترحيل",4000,"8B4513",true],
-  ["2025-12-08","سلمان – طبقات الدفان","حفر وترحيل",3800,"8B4513",true],
-  ["2025-12-08","سلمان – رمل دفان إضافي","حفر وترحيل",3500,"8B4513",true],
-  ["2025-12-09","سلمان – آخر دفعة للدفن","حفر وترحيل",1000,"8B4513",true],
-  ["2025-12-21","MTS Mabane – حديد","حديد",18975,"E07B3A",true],
-  ["2025-12-22","MTS Mabane – حديد 3 طن","حديد",7245,"E07B3A",true],
-  ["2025-12-23","طلبات سباكة – ميدة","سباكة وكهرباء",3100,"9B59B6",false],
-  ["2025-12-23","سلمان – دفعات متفرقة","متفرقات",6700,"7F8C8D",false],
-  ["2025-12-29","شركة الخرسانة – دفعة خرسانة 3","خرسانة",25000,"3A6EA5",true],
-  ["2025-12-29","تصليح باب ولوحة","متفرقات",700,"7F8C8D",false],
-  ["2026-01-04","مقاول سباكة – دفعة أولى","سباكة وكهرباء",12500,"9B59B6",false],
-  ["2026-01-12","مقاول البناء – بعد صب الميدة","مقاولات",22080,"217346",true],
-  ["2026-01-12","مقاول كهرباء – دفعة أولى","سباكة وكهرباء",12500,"9B59B6",false],
-  ["2026-01-12","مؤسسة محمد إبراهيم – وايت","متفرقات",500,"7F8C8D",false],
-  ["2026-01-21","جميلة القحطاني – قيمة الطبقة الأولى","عزل",2000,"16A085",true],
-  ["2026-01-21","شركة اختبار التربة – اختبار طبقتين","دراسات وفحص",720,"8E44AD",false],
+const fmt=n=>Math.round(n).toLocaleString('ar-EG');
+const TOTAL=878348.3;
+const monthly=[["مايو\n25", 72500.0], ["يونيو\n25", 6000.0], ["يوليو\n25", 35500.0], ["أغسطس\n25", 2500.0], ["سبتمبر\n25", 9354.0], ["أكتوبر\n25", 123924.0], ["نوفمبر\n25", 128648.2], ["ديسمبر\n25", 88770.0], ["يناير\n26", 80324.1], ["فبراير\n26", 87222.0], ["مارس\n26", 84865.0], ["أبريل\n26", 96729.0], ["مايو\n26", 62012.0]];
+const categories=[{"name":"حديد","val":197262.0,"color":"E07B3A"},{"name":"خرسانة","val":154262.0,"color":"3A6EA5"},{"name":"مقاولات","val":145425.0,"color":"217346"},{"name":"حفر وترحيل","val":76800.0,"color":"8B4513"},{"name":"تصميم وإشراف","val":70000.0,"color":"C9A84C"},{"name":"سباكة وكهرباء","val":67624.1,"color":"9B59B6"},{"name":"رواتب","val":52000.0,"color":"E74C3C"},{"name":"مواد بناء","val":50798.0,"color":"5D6D7E"},{"name":"متفرقات","val":24110.0,"color":"7F8C8D"},{"name":"تأمين","val":13234.2,"color":"C0392B"},{"name":"عزل","val":9409.0,"color":"16A085"},{"name":"عمالة","val":9000.0,"color":"2980B9"},{"name":"دراسات وفحص","val":7470.0,"color":"8E44AD"},{"name":"مواد","val":954.0,"color":"95A5A6"}];
+const transactions=[
+  ["2026-05-09","شركة جسر المحيط – حديد أعمدة الدور الأول","حديد",18407,"E07B3A",true],
+  ["2026-05-06","دفعة صبة سقف الأرضي وصبات مواصير ودرايش","مقاولات",39445,"217346",true],
+  ["2026-05-05","زيارة مهندس – حسين فارس القحطان","دراسات وفحص",600,"8E44AD",false],
+  ["2026-05-05","سلمان – تنظيف حديد الصبة","عمالة",900,"2980B9",true],
+  ["2026-05-05","سلمان – مروحة صبة","مواد بناء",700,"5D6D7E",true],
+  ["2026-05-05","سلمان – متفرقات","متفرقات",50,"7F8C8D",false],
+  ["2026-05-04","شركة الشمال الجديد – بلك","مواد بناء",1360,"5D6D7E",true],
+  ["2026-05-04","سلمان – إيجار أكياس نور (صبة ليلية)","متفرقات",250,"7F8C8D",false],
+  ["2026-05-02","سلمان – تنظيف السقف","عمالة",300,"2980B9",true],
+  ["2026-04-29","شركة الشمال الجديد – فلين وبلك أحمر","مواد بناء",7350,"5D6D7E",true],
+  ["2026-04-26","شركة جسر المحيط – حديد 3 طن (إضافي للسقف)","حديد",10350,"E07B3A",true],
+  ["2026-04-25","شركة آل طالب – بلاستيك صبة","مواد بناء",620,"5D6D7E",true],
+  ["2026-04-25","جميلة القحطاني – نثريات رافعة بلاط","متفرقات",500,"7F8C8D",false],
+  ["2026-04-16","إيجار سقالات (35 يوم)","مقاولات",6000.0,"217346",true],
+  ["2026-04-16","شركة جسر المحيط – حديد صبة الدور الأرضي","حديد",56503.0,"E07B3A",true],
+  ["2026-04-12","شركة الشمال الجديد – بلك ٧","مواد بناء",4056.0,"5D6D7E",true],
+  ["2026-04-09","جميلة القحطاني – عمل نظافة المكان","متفرقات",400.0,"7F8C8D",false],
+  ["2026-04-07","جميلة القحطاني – متفرقات ٣","متفرقات",150.0,"7F8C8D",false],
+  ["2026-04-07","جميلة القحطاني – رمل مباني","مواد بناء",800.0,"5D6D7E",true],
+  ["2026-04-07","جميلة القحطاني – أسمنت ٦","مواد بناء",450.0,"5D6D7E",true],
+  ["2026-04-07","راتب مشرف المشروع – أبريل 2026","رواتب",3500.0,"E74C3C",false],
+  ["2026-04-01","نجارة درج","مقاولات",3000.0,"217346",true],
+  ["2026-04-01","أسمنت (بدون إيصال)","مواد بناء",550.0,"5D6D7E",true],
+  ["2026-04-01","راتب الحارس – أبريل 2026","رواتب",2500.0,"E74C3C",false],
+  ["2026-03-31","شركة المنتجات الخرسانية – خرسانة سقف الدور الأرضي","خرسانة",40000.0,"3A6EA5",true],
+  ["2026-03-29","شركة الشمال الجديد – بلك ٦","مواد بناء",2788.0,"5D6D7E",true],
+  ["2026-03-28","جميلة القحطاني – أسمنت ٥","مواد بناء",450.0,"5D6D7E",true],
+  ["2026-03-26","شركة الشمال الجديد – بلوك ٤ (دفعات مارس)","مواد بناء",5386.0,"5D6D7E",true],
+  ["2026-03-13","سلمان – وايت ماء ٢","متفرقات",350.0,"7F8C8D",false],
+  ["2026-03-12","شركة أبراج الشهباء – تكملة دفعة الأعمدة الدور الأول","مقاولات",1140.0,"217346",true],
+  ["2026-03-11","جميلة القحطاني – أسمنت ٣","مواد بناء",270.0,"5D6D7E",true],
+  ["2026-03-09","شركة الشمال الجديد – بلك ٣","مواد بناء",2628.0,"5D6D7E",true],
+  ["2026-03-04","شركة أبراج الشهباء – نص دفعة أعمدة الدور الأول وأرضيات","مقاولات",21850.0,"217346",true],
+  ["2026-03-04","وايت ماء","متفرقات",350.0,"7F8C8D",false],
+  ["2026-03-03","سلمان – أسمنت ٢","مواد بناء",510.0,"5D6D7E",true],
+  ["2026-03-02","شركة الشمال الجديد – بلوك ٢","مواد بناء",3143.0,"5D6D7E",true],
+  ["2026-03-02","راتب مشرف المشروع – مارس 2026","رواتب",3500.0,"E74C3C",false],
+  ["2026-03-01","راتب الحارس – مارس 2026","رواتب",2500.0,"E74C3C",false],
+  ["2026-02-27","جميلة القحطاني – بلوك ورمل","مواد بناء",1500.0,"5D6D7E",true],
+  ["2026-02-26","متفرقات – STC Bank","متفرقات",440.0,"7F8C8D",false],
+  ["2026-02-25","تكملة الدفعة الثانية – كهرباء وسباكة","سباكة وكهرباء",10000.0,"9B59B6",false],
+  ["2026-02-25","شركة الشمال الجديد – بلوك ١ (الدور الأرضي)","مواد بناء",18237.0,"5D6D7E",true],
+  ["2026-02-17","مقاول سباكة – جزء من الدفعة الثانية","سباكة وكهرباء",5000.0,"9B59B6",false],
+  ["2026-02-14","شركة الخرسانة – أعمدة الدور الأول","خرسانة",15000.0,"3A6EA5",true],
+  ["2026-02-08","جميلة القحطاني – تحويل","عزل",500.0,"16A085",true],
+  ["2026-02-07","مباني الجزيرة – حديد النظافة وأعمدة","حديد",30825.0,"E07B3A",true],
+  ["2026-02-04","STC Bank – وايت","متفرقات",220.0,"7F8C8D",false],
+  ["2026-02-01","راتب مشرف المشروع – فبراير 2026","رواتب",3000.0,"E74C3C",false],
+  ["2026-02-01","راتب الحارس – فبراير 2026","رواتب",2500.0,"E74C3C",false],
   ["2026-01-28","مؤسسة صالح حمزي – أغراض سباكة","سباكة وكهرباء",24524.1,"9B59B6",false],
-  ["2026-02-04","STC Bank – وايت","متفرقات",220,"7F8C8D",false],
-  ["2026-02-07","مباني الجزيرة – حديد النظافة وأعمدة","حديد",30825,"E07B3A",true],
-  ["2026-02-08","جميلة القحطاني – تحويل","عزل",500,"16A085",true],
-  ["2026-02-14","شركة الخرسانة – أعمدة الدور الأول","خرسانة",15000,"3A6EA5",true],
-  ["2026-02-17","مقاول سباكة – جزء من الدفعة الثانية","سباكة وكهرباء",5000,"9B59B6",false],
-  ["2025-05-01","راتب الحارس – مايو 2025","رواتب",2500,"E74C3C",false],
-  ["2025-06-01","راتب الحارس – يونيو 2025","رواتب",2500,"E74C3C",false],
-  ["2025-07-01","راتب الحارس – يوليو 2025","رواتب",2500,"E74C3C",false],
-  ["2025-08-01","راتب الحارس – أغسطس 2025","رواتب",2500,"E74C3C",false],
-  ["2025-09-01","راتب الحارس – سبتمبر 2025","رواتب",2500,"E74C3C",false],
-  ["2025-10-01","راتب مشرف المشروع – أكتوبر 2025","رواتب",3000,"E74C3C",false],
-  ["2025-10-01","راتب الحارس – أكتوبر 2025","رواتب",2500,"E74C3C",false],
-  ["2025-11-01","راتب مشرف المشروع – نوفمبر 2025","رواتب",3000,"E74C3C",false],
-  ["2025-11-01","راتب الحارس – نوفمبر 2025","رواتب",2500,"E74C3C",false],
-  ["2025-12-01","راتب مشرف المشروع – ديسمبر 2025","رواتب",3000,"E74C3C",false],
-  ["2025-12-01","راتب الحارس – ديسمبر 2025","رواتب",2500,"E74C3C",false],
-  ["2026-01-01","راتب مشرف المشروع – يناير 2026","رواتب",3000,"E74C3C",false],
-  ["2026-01-01","راتب الحارس – يناير 2026","رواتب",2500,"E74C3C",false],
-  ["2026-02-01","راتب مشرف المشروع – فبراير 2026","رواتب",3000,"E74C3C",false],
-  ["2026-02-01","راتب الحارس – فبراير 2026","رواتب",2500,"E74C3C",false],
+  ["2026-01-21","جميلة القحطاني – قيمة الطبقة الأولى","عزل",2000.0,"16A085",true],
+  ["2026-01-21","شركة اختبار التربة – اختبار طبقتين","دراسات وفحص",720.0,"8E44AD",false],
+  ["2026-01-12","مقاول البناء – بعد صب الميدة","مقاولات",22080.0,"217346",true],
+  ["2026-01-12","مقاول كهرباء – دفعة أولى","سباكة وكهرباء",12500.0,"9B59B6",false],
+  ["2026-01-12","مؤسسة محمد إبراهيم – وايت","متفرقات",500.0,"7F8C8D",false],
+  ["2026-01-04","مقاول سباكة – دفعة أولى","سباكة وكهرباء",12500.0,"9B59B6",false],
+  ["2026-01-01","راتب مشرف المشروع – يناير 2026","رواتب",3000.0,"E74C3C",false],
+  ["2026-01-01","راتب الحارس – يناير 2026","رواتب",2500.0,"E74C3C",false],
+  ["2025-12-29","شركة الخرسانة – دفعة خرسانة 3","خرسانة",25000.0,"3A6EA5",true],
+  ["2025-12-29","تصليح باب ولوحة","متفرقات",700.0,"7F8C8D",false],
+  ["2025-12-23","طلبات سباكة – ميدة","سباكة وكهرباء",3100.0,"9B59B6",false],
+  ["2025-12-23","سلمان – دفعات متفرقة","متفرقات",6700.0,"7F8C8D",false],
+  ["2025-12-22","MTS Mabane – حديد 3 طن","حديد",7245.0,"E07B3A",true],
+  ["2025-12-21","MTS Mabane – حديد","حديد",18975.0,"E07B3A",true],
+  ["2025-12-09","سلمان – آخر دفعة للدفن","حفر وترحيل",1000.0,"8B4513",true],
+  ["2025-12-08","اختبار الدفان","دراسات وفحص",1750.0,"8E44AD",false],
+  ["2025-12-08","سلمان – دفان دفعة ثانية","حفر وترحيل",4000.0,"8B4513",true],
+  ["2025-12-08","سلمان – طبقات الدفان","حفر وترحيل",3800.0,"8B4513",true],
+  ["2025-12-08","سلمان – رمل دفان إضافي","حفر وترحيل",3500.0,"8B4513",true],
+  ["2025-12-06","سلمان – مقاول الدفان","حفر وترحيل",3000.0,"8B4513",true],
+  ["2025-12-04","سلمان – الدفان ردود","حفر وترحيل",3500.0,"8B4513",true],
+  ["2025-12-02","سلمان – متفرقات","متفرقات",1000.0,"7F8C8D",false],
+  ["2025-12-01","راتب مشرف المشروع – ديسمبر 2025","رواتب",3000.0,"E74C3C",false],
+  ["2025-12-01","راتب الحارس – ديسمبر 2025","رواتب",2500.0,"E74C3C",false],
+  ["2025-11-27","شركة الشريف – حديد الفلة","حديد",5626.0,"E07B3A",true],
+  ["2025-11-21","Abad Est – عزل القواعد","عزل",1049.0,"16A085",true],
+  ["2025-11-18","شركة الشريف – حديد 2 طن","حديد",4830.0,"E07B3A",true],
+  ["2025-11-12","شركة أبراج الشهباء – دفعة مقاول","مقاولات",24080.0,"217346",true],
+  ["2025-11-12","سلمان – أغراض فلة","متفرقات",2000.0,"7F8C8D",false],
+  ["2025-11-12","سلمان – دفعة أولى عزل","عزل",5000.0,"16A085",true],
+  ["2025-11-10","شركة الخرسانة – خرسانة القواعد","خرسانة",54262.0,"3A6EA5",true],
+  ["2025-11-10","المساح – آخر طلعتين","دراسات وفحص",1400.0,"8E44AD",false],
+  ["2025-11-08","مؤسسة محمد إبراهيم – وايت ماء","متفرقات",500.0,"7F8C8D",false],
+  ["2025-11-03","التعاونية للتأمين – عقد التأمين","تأمين",13234.2,"C0392B",false],
+  ["2025-11-01","MTS Mabane – حديد دفعة ثالثة","حديد",11167.0,"E07B3A",true],
+  ["2025-11-01","راتب مشرف المشروع – نوفمبر 2025","رواتب",3000.0,"E74C3C",false],
+  ["2025-11-01","راتب الحارس – نوفمبر 2025","رواتب",2500.0,"E74C3C",false],
+  ["2025-10-29","مقاول المسبح – الدفعة الأولى","مقاولات",7750.0,"217346",false],
+  ["2025-10-22","MTS Mabane – حديد","حديد",4784.0,"E07B3A",true],
+  ["2025-10-19","نفقات عامة – مصاريف متفرقة","متفرقات",10000.0,"7F8C8D",false],
+  ["2025-10-18","عقد الحفر – المرحلة الثانية","حفر وترحيل",24000.0,"8B4513",true],
+  ["2025-10-18","عقد مقاول البناء – الدفعة الأولى","مقاولات",20080.0,"217346",true],
+  ["2025-10-17","طلبات مواد – مواد عزل","عزل",860.0,"16A085",true],
+  ["2025-10-16","إيجار أيدي عاملة – صبة النظافة والقواعد","عمالة",1400.0,"2980B9",true],
+  ["2025-10-16","طلبات مواد – حديد للفلة","حديد",28550.0,"E07B3A",true],
+  ["2025-10-14","طلبات مواد – خرسانة","خرسانة",20000.0,"3A6EA5",true],
+  ["2025-10-09","طلبات مواد – إيجار الخزان (شهري)","مواد",500.0,"95A5A6",false],
+  ["2025-10-08","إيجار أيدي عاملة – المساح","دراسات وفحص",500.0,"8E44AD",false],
+  ["2025-10-01","راتب مشرف المشروع – أكتوبر 2025","رواتب",3000.0,"E74C3C",false],
+  ["2025-10-01","راتب الحارس – أكتوبر 2025","رواتب",2500.0,"E74C3C",false],
+  ["2025-09-19","إيجار أيدي عاملة – تحديد البيارة والمعالم","عمالة",1000.0,"2980B9",true],
+  ["2025-09-13","طلبات مواد – أغراض بناء (جدار الكهرب)","مواد",454.0,"95A5A6",true],
+  ["2025-09-07","إيجار أيدي عاملة – حداد السور (دفعة إضافية)","عمالة",1400.0,"2980B9",true],
+  ["2025-09-04","إيجار أيدي عاملة – حداد السور","عمالة",4000.0,"2980B9",true],
+  ["2025-09-01","راتب الحارس – سبتمبر 2025","رواتب",2500.0,"E74C3C",false],
+  ["2025-08-01","راتب الحارس – أغسطس 2025","رواتب",2500.0,"E74C3C",false],
+  ["2025-07-19","عقد الحفر وترحيل التربة - الدفعة الرابعة والأخيرة","حفر وترحيل",8000.0,"8B4513",false],
+  ["2025-07-16","عقد الحفر وترحيل التربة - الدفعة الثالثة","حفر وترحيل",10000.0,"8B4513",false],
+  ["2025-07-14","عقد الحفر وترحيل التربة - الدفعة الثانية","حفر وترحيل",10000.0,"8B4513",false],
+  ["2025-07-08","عقد الحفر وترحيل التربة - الدفعة الأولى","حفر وترحيل",5000.0,"8B4513",false],
+  ["2025-07-01","راتب الحارس – يوليو 2025","رواتب",2500.0,"E74C3C",false],
+  ["2025-06-30","تجهيز اختبار التربة (معدة شيول)","حفر وترحيل",1000.0,"8B4513",false],
+  ["2025-06-29","اختبار التربة","دراسات وفحص",1500.0,"8E44AD",false],
+  ["2025-06-28","الرفع المساحي","دراسات وفحص",1000.0,"8E44AD",false],
+  ["2025-06-01","راتب الحارس – يونيو 2025","رواتب",2500.0,"E74C3C",false],
+  ["2025-05-05","دفعة أولى - عقد التصميم المعماري (SIMBA)","تصميم وإشراف",37000.0,"C9A84C",false],
+  ["2025-05-05","الدفعة الثانية – عقد التصميم المعماري (SIMBA)","تصميم وإشراف",33000.0,"C9A84C",false],
+  ["2025-05-01","راتب الحارس – مايو 2025","رواتب",2500.0,"E74C3C",false]
 ];
 
-// ── Animate progress bars ────────────────────────────────────────────────
-setTimeout(() => {
-  document.getElementById('totalFill').style.width = '55.0%';
-  document.querySelectorAll('.bc-bar-fill').forEach(b => {
-    b.style.width = b.dataset.w + '%';
-  });
-}, 200);
+// Animate bars
+setTimeout(()=>{
+  document.getElementById('tf').style.width=document.getElementById('tf').dataset.w+'%';
+  document.querySelectorAll('.bpf').forEach(b=>b.style.width=b.dataset.w+'%');
+},200);
 
-// ── Monthly Chart ─────────────────────────────────────────────────────────
-const maxV = Math.max(...monthly.map(m => m.val));
-const chartEl = document.getElementById('monthlyChart');
-const labelsEl = document.getElementById('monthlyLabels');
-const barH = window.innerWidth < 580 ? 100 : 130;
-
-monthly.forEach((m, i) => {
-  const pct = m.val / maxV;
-  const isPeak = m.val === maxV;
-  const col = document.createElement('div'); col.className = 'month-col';
-  const bar = document.createElement('div');
-  bar.className = 'month-bar' + (isPeak ? ' peak' : '');
-  bar.style.height = '0px';
-  bar.innerHTML = `<span class="month-tip">${fmt(m.val)} ر</span>`;
-  bar.addEventListener('click', () => {
-    document.querySelectorAll('.month-bar').forEach(b => b.classList.remove('show-tip'));
-    bar.classList.toggle('show-tip');
-  });
-  col.appendChild(bar); chartEl.appendChild(col);
-  setTimeout(() => {
-    bar.style.transition = 'height 0.9s cubic-bezier(.4,0,.2,1)';
-    bar.style.height = (pct * barH) + 'px';
-  }, 80 + i * 55);
-  const lbl = document.createElement('div');
-  lbl.className = 'month-label'; lbl.style.flex='1'; lbl.style.minWidth='26px';
-  lbl.innerHTML = m.label.replace('\n','<br>');
-  labelsEl.appendChild(lbl);
+// Monthly chart
+const maxV=Math.max(...monthly.map(m=>m[1]));
+const ch=document.getElementById('ch'),cl=document.getElementById('cl');
+monthly.forEach((m,i)=>{
+  const col=document.createElement('div'); col.className='mcol';
+  const bar=document.createElement('div');
+  const h=(m[1]/maxV*125);
+  bar.className='mbar'+(m[1]===maxV?' peak':'')+(h<30?' sm-bar':'');
+  bar.style.height='0';
+  bar.innerHTML=`<span class="mtip">${fmt(m[1])}</span>`;
+  col.appendChild(bar); ch.appendChild(col);
+  setTimeout(()=>{bar.style.transition='height .9s cubic-bezier(.4,0,.2,1)';bar.style.height=h+'px'},80+i*50);
+  const lbl=document.createElement('div');
+  lbl.className='mlbl'; lbl.style.flex='1'; lbl.style.minWidth='22px';
+  lbl.innerHTML=m[0].replace('\n','<br>'); cl.appendChild(lbl);
 });
 
-// ── Categories ────────────────────────────────────────────────────────────
-const catEl = document.getElementById('catList');
-categories.forEach(c => {
-  const pct = (c.val / TOTAL * 100).toFixed(1);
-  const barW = (c.val / categories[0].val * 100).toFixed(1);
-  const item = document.createElement('div');
-  item.innerHTML = `
-    <div class="cat-row">
-      <div class="cat-name"><span class="cat-dot" style="background:#${c.color}"></span>${c.name}</div>
-      <div class="cat-right"><span class="cat-pct">${pct}%</span><span class="cat-amt">${fmt(c.val)}</span></div>
-    </div>
-    <div class="cat-track"><div class="cat-fill" style="background:#${c.color}" data-w="${barW}"></div></div>`;
-  catEl.appendChild(item);
+// Categories
+const ce=document.getElementById('cats');
+categories.forEach(c=>{
+  const pct=(c.val/TOTAL*100).toFixed(1);
+  const bw=(c.val/categories[0].val*100).toFixed(1);
+  const d=document.createElement('div');
+  d.innerHTML=`<div class="cr"><div class="cn"><span class="cdot" style="background:#${c.color}"></span>${c.name}</div><div class="cright"><span class="cpct">${pct}%</span><span class="camt">${fmt(c.val)}</span></div></div><div class="ctr"><div class="cfi" style="background:#${c.color}" data-w="${bw}"></div></div>`;
+  ce.appendChild(d);
 });
-setTimeout(() => {
-  document.querySelectorAll('.cat-fill').forEach(b => { b.style.width = b.dataset.w + '%'; });
-}, 350);
+setTimeout(()=>document.querySelectorAll('.cfi').forEach(b=>b.style.width=b.dataset.w+'%'),350);
 
-// ── Top 10 ────────────────────────────────────────────────────────────────
-const sorted = [...transactions].sort((a,b) => b[3]-a[3]).slice(0,10);
-const topEl = document.getElementById('topList');
-sorted.forEach((t, i) => {
-  const div = document.createElement('div');
-  div.className = 'tx-card' + (i===0?' top1':'') + (t[5]?' skel':' other');
-  div.innerHTML = `
-    <div class="tx-num ${i===0?'gold':''}">${i+1}</div>
-    <div class="tx-info">
-      <div class="tx-title">${t[1]}</div>
-      <div class="tx-meta"><span>${t[0]}</span><span class="tx-badge" style="background:#${t[4]}22;color:#${t[4]}">${t[2]}</span><span style="font-size:9px;color:${t[5]?'var(--green)':'var(--red2)'}">${t[5]?'🏗️ عظم':'🔧 أخرى'}</span></div>
-    </div>
-    <div class="tx-right"><div class="tx-amount">${fmt(t[3])}</div><div class="tx-cumul">ريال</div></div>`;
-  topEl.appendChild(div);
-});
+// Transactions — newest first, cumulative from newest
+const txl=document.getElementById('txl');
+let shown=0;
+// Compute running totals from oldest to newest first for cumulative
+const cumTotals=[];
+let cum=0;
+[...transactions].reverse().forEach(t=>{cum+=t[3];cumTotals.unshift(cum)});
 
-// ── All Transactions — lazy load ──────────────────────────────────────────
-const allEl = document.getElementById('allList');
-let cumul=0, shown=0;
-const CHUNK=10;
-function renderTx(start, end) {
-  for (let i=start; i<Math.min(end,transactions.length); i++) {
-    const t = transactions[i]; cumul += t[3];
-    const div = document.createElement('div');
-    div.className = 'tx-card' + (t[5]?' skel':' other');
-    div.innerHTML = `
-      <div class="tx-num">${i+1}</div>
-      <div class="tx-info">
-        <div class="tx-title">${t[1]}</div>
-        <div class="tx-meta"><span>${t[0]}</span><span class="tx-badge" style="background:#${t[4]}22;color:#${t[4]}">${t[2]}</span><span style="font-size:9px;color:${t[5]?'var(--green)':'var(--red2)'}">${t[5]?'🏗️':'🔧'}</span></div>
-      </div>
-      <div class="tx-right"><div class="tx-amount">${fmt(t[3])}</div><div class="tx-cumul">${fmt(cumul)}</div></div>`;
-    allEl.appendChild(div); shown++;
+function more(){
+  const end=Math.min(shown+10,transactions.length);
+  for(let i=shown;i<end;i++){
+    const t=transactions[i];
+    const div=document.createElement('div');
+    div.className='txc '+(t[5]?'sk':'ot');
+    div.innerHTML=`<div class="txn ${i===0?'g':''}">${i+1}</div><div class="txi"><div class="txt">${t[1]}</div><div class="txm"><span>${t[0]}</span><span class="txbg" style="background:#${t[4]}22;color:#${t[4]}">${t[2]}</span><span style="font-size:9px;color:${t[5]?'var(--green)':'var(--red2)'}">${t[5]?'🏗️':'🔧'}</span></div></div><div class="txr"><div class="txamt">${fmt(t[3])}</div><div class="txcum">${fmt(cumTotals[i])}</div></div>`;
+    txl.appendChild(div);
   }
-  if (shown >= transactions.length) document.getElementById('showMoreBtn').style.display='none';
+  shown=end;
+  if(shown>=transactions.length)document.getElementById('smb').style.display='none';
 }
-function showMore() { renderTx(shown, shown+CHUNK); }
-renderTx(0, CHUNK);
+more();
 </script>
 
 </body>
